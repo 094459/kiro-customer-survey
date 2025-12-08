@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Customer Survey{% endblock %}
+
+{% block content %}
+<div class="dashboard">
+    <h1>Dashboard</h1>
+    <p>Create surveys and share them with your customers to collect feedback.</p>
+    
+    <a href="{{ url_for('surveys.create_survey') }}" class="btn">Create New Survey</a>
+    
+    <h2>Your Surveys</h2>
+    {% if surveys %}
+    <div class="survey-list">
+        {% for survey in surveys %}
+        <div class="survey-card">
+            <h3>{{ survey.title }}</h3>
+            <p>{{ survey.description or 'No description' }}</p>
+            <div class="survey-meta">
+                <span class="status {% if survey.is_active %}active{% else %}inactive{% endif %}">
+                    {{ 'Active' if survey.is_active else 'Inactive' }}
+                </span>
+                <span>Created: {{ survey.created_at }}</span>
+            </div>
+            <div class="survey-actions">
+                <a href="{{ url_for('surveys.survey_response', survey_id=survey.id, _external=True) }}" class="btn-small">Share Link</a>
+                <a href="{{ url_for('surveys.survey_results', survey_id=survey.id) }}" class="btn-small">View Results</a>
+                <a href="{{ url_for('surveys.toggle_survey', survey_id=survey.id) }}" class="btn-small">
+                    {{ 'Deactivate' if survey.is_active else 'Activate' }}
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>No surveys yet. Create your first survey!</p>
+    {% endif %}
+</div>
+{% endblock %}

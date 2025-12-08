@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Results - {{ survey.title }}{% endblock %}
+
+{% block content %}
+<div class="survey-results">
+    <h1>{{ survey.title }}</h1>
+    {% if survey.description %}
+    <p>{{ survey.description }}</p>
+    {% endif %}
+    
+    <h2>Results ({{ total_votes }} total responses)</h2>
+    
+    <div class="results-list">
+        {% for result in results %}
+        <div class="result-item">
+            <div class="result-header">
+                <span class="option-text">{{ result.option_text }}</span>
+                <span class="vote-count">{{ result.vote_count }} votes</span>
+            </div>
+            <div class="result-bar">
+                <div class="result-fill" style="width: {% if total_votes > 0 %}{{ (result.vote_count / total_votes * 100)|round(1) }}{% else %}0{% endif %}%"></div>
+            </div>
+            <div class="result-percentage">
+                {% if total_votes > 0 %}
+                {{ (result.vote_count / total_votes * 100)|round(1) }}%
+                {% else %}
+                0%
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <a href="{{ url_for('surveys.dashboard') }}" class="btn">Back to Dashboard</a>
+</div>
+{% endblock %}

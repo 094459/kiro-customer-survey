@@ -1,0 +1,96 @@
+tables:
+  Users:
+    columns:
+      user_id:
+        type: INTEGER
+        primary_key: true
+        autoincrement: true
+      email:
+        type: TEXT
+        unique: true
+        nullable: false
+      password_hash:
+        type: TEXT
+        nullable: false
+      created_at:
+        type: TIMESTAMP
+        default: CURRENT_TIMESTAMP
+      last_login:
+        type: TIMESTAMP
+
+  Surveys:
+    columns:
+      survey_id:
+        type: INTEGER
+        primary_key: true
+        autoincrement: true
+      user_id:
+        type: INTEGER
+        nullable: false
+        references:
+          table: Users
+          column: user_id
+          on_delete: CASCADE
+      title:
+        type: TEXT
+        nullable: false
+      description:
+        type: TEXT
+      is_active:
+        type: BOOLEAN
+        default: true
+      created_at:
+        type: TIMESTAMP
+        default: CURRENT_TIMESTAMP
+      updated_at:
+        type: TIMESTAMP
+        default: CURRENT_TIMESTAMP
+
+  Survey_Options:
+    columns:
+      option_id:
+        type: INTEGER
+        primary_key: true
+        autoincrement: true
+      survey_id:
+        type: INTEGER
+        nullable: false
+        references:
+          table: Surveys
+          column: survey_id
+          on_delete: CASCADE
+      option_text:
+        type: TEXT
+        nullable: false
+      option_order:
+        type: INTEGER
+        nullable: false
+    constraints:
+      check_option_order:
+        check: option_order BETWEEN 1 AND 5
+
+  Survey_Responses:
+    columns:
+      response_id:
+        type: INTEGER
+        primary_key: true
+        autoincrement: true
+      survey_id:
+        type: INTEGER
+        nullable: false
+        references:
+          table: Surveys
+          column: survey_id
+          on_delete: CASCADE
+      option_id:
+        type: INTEGER
+        nullable: false
+        references:
+          table: Survey_Options
+          column: option_id
+          on_delete: CASCADE
+      respondent_email:
+        type: TEXT
+      response_date:
+        type: TIMESTAMP
+        default: CURRENT_TIMESTAMP

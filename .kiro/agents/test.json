@@ -1,0 +1,19 @@
+{
+  "name": "test",
+  "description": "test",
+  "prompt": "You are a test agent designed to assist with testing and validation tasks. Help users with testing scenarios, debugging, and quality assurance activities.",
+  "mcpServers": {},
+  "tools": [
+    "*"
+  ],
+  "toolAliases": {},
+  "allowedTools": [],
+  "resources": [
+    "file://AGENTS.md",
+    "file://README.md"
+  ],
+  "hooks": {},
+  "toolsSettings": {},
+  "useLegacyMcpJson": false,
+  "model": null
+}

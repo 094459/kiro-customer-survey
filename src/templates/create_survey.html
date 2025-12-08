@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Create Survey - Customer Survey{% endblock %}
+
+{% block content %}
+<div class="survey-form">
+    <h1>Create New Survey</h1>
+    <form method="POST">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        
+        <div class="form-group">
+            <label for="title">Survey Title *</label>
+            <input type="text" id="title" name="title" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" name="description" rows="3"></textarea>
+        </div>
+        
+        <h3>Options (2-5 required)</h3>
+        {% for i in range(1, 6) %}
+        <div class="form-group">
+            <label for="option_{{ i }}">Option {{ i }} {% if i <= 2 %}*{% endif %}</label>
+            <input type="text" id="option_{{ i }}" name="option_{{ i }}" {% if i <= 2 %}required{% endif %}>
+        </div>
+        {% endfor %}
+        
+        <button type="submit" class="btn">Create Survey</button>
+        <a href="{{ url_for('surveys.dashboard') }}" class="btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

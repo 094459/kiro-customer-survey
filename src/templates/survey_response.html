@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}{{ survey.title }} - Survey{% endblock %}
+
+{% block content %}
+<div class="survey-response">
+    <h1>{{ survey.title }}</h1>
+    {% if survey.description %}
+    <p class="survey-description">{{ survey.description }}</p>
+    {% endif %}
+    
+    <form method="POST">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        
+        <div class="options-list">
+            {% for option in options %}
+            <label class="option-item">
+                <input type="radio" name="option_id" value="{{ option.id }}" required>
+                <span>{{ option.option_text }}</span>
+            </label>
+            {% endfor %}
+        </div>
+        
+        <div class="form-group">
+            <label for="email">Your Email (optional)</label>
+            <input type="email" id="email" name="email">
+        </div>
+        
+        <button type="submit" class="btn">Submit Response</button>
+    </form>
+</div>
+{% endblock %}

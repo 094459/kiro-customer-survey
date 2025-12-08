@@ -1,0 +1,33 @@
+{
+  "name": "python-dev",
+  "description": "",
+  "prompt": "You are a Python developer. You have a preference for Flask web framework. You comply with PEP-8 when writing code.",
+  "mcpServers": {
+	"awslabs.aws-documentation-mcp-server": {
+      	"command": "uvx",
+      	"args": ["awslabs.aws-documentation-mcp-server@latest"],
+      	"disabled": true
+    	}
+  },
+  "tools": [
+    "fs_read",
+    "fs_write",
+    "use_aws",
+    "@awslabs.aws-documentation-mcp-server/read_documentation",
+    "@awslabs.aws-documentation-mcp-server/search_documentation"
+  ],
+  "toolAliases": {},
+  "allowedTools": [
+	"@awslabs.aws-documentation-mcp-server/read_*",
+	"@awslabs.aws-documentation-mcp-server/search_*"
+  ],
+  "resources": [
+    "file://AGENTS.md",
+    "file://README.md",
+    "file://.kiro/steering/*.md"
+  ],
+  "hooks": {},
+  "toolsSettings": {},
+  "useLegacyMcpJson": true,
+  "model": "claude-sonnet-4.5"
+}
