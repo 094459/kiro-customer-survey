@@ -28,11 +28,18 @@ cp .env.example .env
 ```
 
 3. Run the application:
+
+**Development:**
 ```bash
 python run.py
 ```
 
-The app will be available at http://localhost:5000
+**Production with Gunicorn:**
+```bash
+uv run gunicorn -c gunicorn.conf.py run:app
+```
+
+The app will be available at http://localhost:5000 (development) or http://localhost:8000 (production)
 
 ## Usage
 

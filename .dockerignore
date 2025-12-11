@@ -1,0 +1,10 @@
+survey.db
+.venv/
+.git/
+.coverage
+htmlcov/
+__pycache__/
+*.pyc
+.env
+.pytest_cache/
+tests/
