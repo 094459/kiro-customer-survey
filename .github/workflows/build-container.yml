@@ -37,3 +37,6 @@ jobs:
         platforms: linux/amd64,linux/arm64
         push: true
         tags: ghcr.io/${{ github.repository }}:${{ github.sha }}
+    
+    - name: Display container registry link
+      run: echo "Container image available at https://github.com/${{ github.repository }}/pkgs/container/${{ github.event.repository.name }}"
