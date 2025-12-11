@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Help - Customer Survey{% endblock %}
+
+{% block content %}
+<h1>Help - How to Use the Survey Application</h1>
+
+<h2>Getting Started</h2>
+<p>To use this application, you need to create an account and log in.</p>
+
+<h2>Creating Surveys</h2>
+<ol>
+    <li>After logging in, click "Create New Survey" on your dashboard</li>
+    <li>Enter a title and description for your survey</li>
+    <li>Add up to 5 response options</li>
+    <li>Click "Create Survey" to save</li>
+</ol>
+
+<h2>Sharing Surveys</h2>
+<p>Once created, you can share the survey link with respondents. They don't need an account to respond.</p>
+
+<h2>Viewing Results</h2>
+<p>From your dashboard, click "View Results" next to any survey to see response statistics.</p>
+
+<h2>Managing Surveys</h2>
+<p>You can activate/deactivate surveys from your dashboard. Inactive surveys cannot receive new responses.</p>
+
+<div style="margin-top: 2rem;">
+    <a href="{{ url_for('pages.contact_page') }}">Need more help? Contact us</a>
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Us - Customer Survey{% endblock %}
+
+{% block content %}
+<h1>Contact Us</h1>
+
+<p>If you're experiencing problems or need assistance with the survey application, please contact us using the information below:</p>
+
+<div style="margin: 2rem 0; padding: 1rem; border: 1px solid #ddd; border-radius: 5px;">
+    <h2>Support Information</h2>
+    <p><strong>Email:</strong> <a href="mailto:support@example.com">support@example.com</a></p>
+    <p><strong>Phone:</strong> <a href="tel:+1234567890">+1 (234) 567-890</a></p>
+</div>
+
+<p>We typically respond to support requests within 24 hours during business days.</p>
+
+<div style="margin-top: 2rem;">
+    <a href="{{ url_for('pages.help_page') }}">Back to Help</a>
+</div>
+{% endblock %}

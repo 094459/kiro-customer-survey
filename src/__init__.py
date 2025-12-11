@@ -38,10 +38,11 @@ def create_app() -> Flask:
         from src.models import User
         return User.query.get(int(user_id))
     
-    from src.routes import auth_bp, surveys_bp
+    from src.routes import auth_bp, surveys_bp, pages_bp
     
     app.register_blueprint(auth_bp)
     app.register_blueprint(surveys_bp)
+    app.register_blueprint(pages_bp)
     
     @app.route("/")
     def index():

@@ -10,12 +10,14 @@
     <nav>
         <div class="container">
             <a href="{{ url_for('surveys.dashboard') if current_user.is_authenticated else url_for('auth.login') }}" class="logo">Survey App</a>
-            {% if current_user.is_authenticated %}
             <div class="nav-links">
+                <a href="{{ url_for('pages.help_page') }}">Help</a>
+                <a href="{{ url_for('pages.contact_page') }}">Contact</a>
+                {% if current_user.is_authenticated %}
                 <span>{{ current_user.email }}</span>
                 <a href="{{ url_for('auth.logout') }}">Logout</a>
+                {% endif %}
             </div>
-            {% endif %}
         </div>
     </nav>
     
